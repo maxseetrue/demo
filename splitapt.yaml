@@ -1,28 +1,8 @@
+---
 
-- name: PreChecks
-  hosts: all
-  
-- name: ensure Atom is installed
-  apt:
-    name: atom
-    state: present
-    update_cache: true
-  become: true
-  register: apt_output
-- debug: var=apt_output
-  tags: verify_atom
-
-- name: Download atom
-  get_url:
-    url: https://atom.io/download/deb
-    dest: "/home/st-admin/Downloads/atom.deb"
-  when: download_atom
-  become: yes
-  tags: download_atom
-
-- name: install atom
-  become: yes
-  apt:
-    deb: /home/st-admin/Downloads/atom.deb
-  when: install_atom
-  tags: install_atom
+- hosts: all
+  tasks:
+  - name: Creating an empty file
+    file:
+      path: "/tmp/file"
+      state: touch
