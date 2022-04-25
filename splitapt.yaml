@@ -6,3 +6,15 @@
     file:
       path: "/tmp/file"
       state: touch
+  - name: check for /etc/hosts
+  stat:
+    path: /tmp/atom.deb
+    register: atom
+
+  - debug:
+    msg: "INSTALLATION /tmp/atom.deb IS EXISTS!"
+    when: atom.stat.exists
+
+- debug:
+    msg: "INSTALLATION /tmp/atom.deb does NOT exist!"
+    when: not atom.stat.exists
