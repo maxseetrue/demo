@@ -1,5 +1,7 @@
+
 - name: PreChecks
   hosts: all
+  
 - name: ensure Atom is installed
   apt:
     name: atom
